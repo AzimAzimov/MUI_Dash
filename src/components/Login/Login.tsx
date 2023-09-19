@@ -8,7 +8,12 @@ const Login: FC = () => {
   if (session) {
     return (
       <>
-        <Button variant="contained" color="error" onClick={() => signOut()}>
+        <Button
+          style={{ width: "200px" }}
+          variant="contained"
+          color="error"
+          onClick={() => signOut()}
+        >
           Sign out
         </Button>
       </>
@@ -17,7 +22,12 @@ const Login: FC = () => {
 
   return (
     <>
-      <Button variant="contained" color="success" onClick={() => signIn()}>
+      <Button
+        variant="contained"
+        color="success"
+        style={{ background: "#84D445", width: "200px" }}
+        onClick={() => signIn()}
+      >
         Sign in
       </Button>
     </>
