@@ -1,0 +1,11 @@
+.main {
+    padding: 0 24px;
+    max-width: 85rem;
+    margin: auto;
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.button {}
+.input {}
