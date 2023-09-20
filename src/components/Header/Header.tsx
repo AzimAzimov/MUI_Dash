@@ -1,6 +1,6 @@
 import { Avatar, useMediaQuery } from "@mui/material";
 import { signIn, signOut, useSession } from "next-auth/react";
-import React, { Context } from "react";
+import React, { Context, useState } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -21,12 +21,8 @@ const Header = (props: HeaderProps) => {
   const { ColorModeContext } = props;
   const { data: session } = useSession();
   const userProfileImage = session?.user?.image!;
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null,
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null,
-  );
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -46,8 +42,7 @@ const Header = (props: HeaderProps) => {
 
   return (
     <AppBar
-      position="static"
-      sx={{ marginBottom: "40px" }}
+      position="fixed"
       style={{ boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.10)" }}
     >
       <Container maxWidth="xl">

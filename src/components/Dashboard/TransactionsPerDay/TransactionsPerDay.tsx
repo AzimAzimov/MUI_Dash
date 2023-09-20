@@ -3,19 +3,10 @@ import { useTheme } from "@mui/material/styles";
 import { Card, Grid, Paper } from "@mui/material";
 import scss from "./TransactionsPerDay.module.scss";
 import Typography from "@mui/material/Typography";
+import DataChart from "@/components/DataChart";
+import { lineChartData } from "@/components/mockData";
 
-interface ITransactionsPerDay {
-  title: string;
-  value: string;
-  changeValue: string;
-}
-
-interface ITransactionsPerDayProps {
-  data?: ITransactionsPerDay;
-}
-
-const TransactionsPerDay = (props: ITransactionsPerDayProps) => {
-  const { data } = props;
+const TransactionsPerDay = () => {
   const theme = useTheme();
 
   return (
@@ -23,6 +14,7 @@ const TransactionsPerDay = (props: ITransactionsPerDayProps) => {
       <Paper className={scss.transactions}>
         <div className={scss.chart}>
           <Typography>TransActions per day</Typography>
+          <DataChart type={"line"} data={lineChartData} />
         </div>
         <div className={scss.cardWrapper}>
           <Card className={scss.card} variant={"outlined"}>

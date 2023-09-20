@@ -1,11 +1,12 @@
 import type { AppProps } from "next/app";
 import { SessionProvider } from "next-auth/react";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import React, { createContext, useMemo, useState } from "react";
+import React, { createContext, useEffect, useMemo, useState } from "react";
 import darkTheme from "@/theme/darkTheme";
 import lightTheme from "@/theme/lightTheme";
 import Header from "@/components/Header";
 import Layout from "@/components/Layout";
+import { useRouter } from "next/router";
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -37,6 +38,21 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
     [],
   );
 
+  const [loading, setLoading] = useState<boolean>(true);
+  console.log(loading);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    router.events.on("routeChangeStart", () => {
+      setLoading(true);
+    });
+
+    router.events.on("routeChangeComplete", () => {
+      setLoading(false);
+    });
+  });
+
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider
@@ -45,9 +61,11 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
         <SessionProvider session={session}>
           <CssBaseline />
           <Header ColorModeContext={ColorModeContext} />
+          {/*{loading && <Preloader />}*/}
           <Layout>
             <Component {...pageProps} />
           </Layout>
+          {/*<Footer />*/}
         </SessionProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>
