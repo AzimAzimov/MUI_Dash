@@ -1,15 +1,18 @@
-import { Box } from "@mui/material";
+"use client";
+import { Box, Grid } from "@mui/material";
 import React, { FC } from "react";
 import DataRibbon from "../../components/Dashboard/DataRibbon";
 import TransactionsPerDay from "@/components/Dashboard/TransactionsPerDay";
+import TransactionBottomRow from "@/components/Dashboard/TransactionBottomRow";
 
 const Dashboard: FC = () => {
   return (
     <Box>
-      {/*Data - Ribbon*/}
-      <DataRibbon />
-      {/*TransactionsPerDay*/}
-      <TransactionsPerDay />
+      <Grid container gap={4} marginTop={2}>
+        <DataRibbon />
+        <TransactionsPerDay />
+      </Grid>
+      <TransactionBottomRow />
     </Box>
   );
 };

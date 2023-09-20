@@ -1,9 +1,13 @@
 
 .layout {
   max-width: 85rem;
-  margin: auto;
+  margin:  100px auto auto auto;
   @media screen and (min-width: 1700px) {
     max-width: 92rem;
+  }
+
+  @media (max-width: 1024px) {
+    margin:  80px auto auto auto;
   }
 
   p, h1, h2, h3, h4, h5 {

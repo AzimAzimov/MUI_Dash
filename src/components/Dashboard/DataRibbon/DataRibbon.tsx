@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Grid } from "@mui/material";
 import DataCard from "@/components/Dashboard/DataCard";
@@ -40,34 +41,6 @@ const DataRibbon = () => {
           description={"How many pitches become sales"}
         />
       </Grid>
-      {/*<h1>Data Ribbon</h1>*/}
-      {/*<Paper sx={{ padding: "1rem", height: "100%" }}>*/}
-      {/*  <div*/}
-      {/*    style={{*/}
-      {/*      display: "flex",*/}
-      {/*      justifyContent: "center",*/}
-      {/*      alignItems: "center",*/}
-      {/*    }}*/}
-      {/*  >*/}
-      {/*    <Typography fontSize={"h6"} color={"lightslategrey"}>*/}
-      {/*      Total Sales*/}
-      {/*    </Typography>*/}
-      {/*    <Tooltip*/}
-      {/*      title={*/}
-      {/*        <Typography fontSize={16}>*/}
-      {/*          {*/}
-      {/*            "The totlals of all Datasoft products in the current financial year which is 462"*/}
-      {/*          }*/}
-      {/*        </Typography>*/}
-      {/*      }*/}
-      {/*    >*/}
-      {/*      <IconButton>*/}
-      {/*        <InfoOutlinedIcon />*/}
-      {/*      </IconButton>*/}
-      {/*    </Tooltip>*/}
-      {/*  </div>*/}
-      {/*  <Typography fontSize={"h4"}>462</Typography>*/}
-      {/*</Paper>*/}
     </Grid>
   );
 };
