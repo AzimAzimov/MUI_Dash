@@ -7,6 +7,9 @@ import lightTheme from "@/theme/lightTheme";
 import Header from "@/components/Header";
 import Layout from "@/components/Layout";
 import { useRouter } from "next/router";
+import Footer from "@/components/Footer";
+import { Preloader } from "@/components/Preloader/Preloader";
+import "../styles/global.scss";
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -38,7 +41,7 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
     [],
   );
 
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   console.log(loading);
 
   const router = useRouter();
@@ -61,11 +64,11 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
         <SessionProvider session={session}>
           <CssBaseline />
           <Header ColorModeContext={ColorModeContext} />
-          {/*{loading && <Preloader />}*/}
+          {loading && <Preloader />}
           <Layout>
             <Component {...pageProps} />
           </Layout>
-          {/*<Footer />*/}
+          <Footer />
         </SessionProvider>
       </ThemeProvider>
     </ColorModeContext.Provider>

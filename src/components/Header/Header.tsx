@@ -10,28 +10,25 @@ import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import ThemeToggleButton from "../ThemeToggleButton";
+import { useTheme } from "@mui/material/styles";
+import NextLink from "next/link";
+import BarChartIcon from "@mui/icons-material/BarChart";
 
 export type HeaderProps = {
   ColorModeContext: Context<{ toggleColorMode: () => void }>;
 };
 
 const Header = (props: HeaderProps) => {
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
   const { ColorModeContext } = props;
   const { data: session } = useSession();
+  const theme = useTheme();
   const userProfileImage = session?.user?.image!;
-  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
@@ -47,7 +44,7 @@ const Header = (props: HeaderProps) => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <BarChartIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -57,8 +54,8 @@ const Header = (props: HeaderProps) => {
               mr: 2,
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
+              fontWeight: 500,
+              letterSpacing: "1px",
               color: "inherit",
               textDecoration: "none",
             }}
@@ -66,7 +63,7 @@ const Header = (props: HeaderProps) => {
             DataSoft
           </Typography>
 
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <BarChartIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
           <Typography
             variant="h5"
             noWrap
@@ -77,8 +74,8 @@ const Header = (props: HeaderProps) => {
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
+              fontWeight: 500,
+              letterSpacing: "1px",
               color: "inherit",
               textDecoration: "none",
             }}
@@ -116,6 +113,17 @@ const Header = (props: HeaderProps) => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+              <MenuItem>
+                <NextLink
+                  href={"/dashboard/profile"}
+                  style={{
+                    color: theme.palette.text.primary,
+                    textDecoration: "none",
+                  }}
+                >
+                  <Typography textAlign={"center"}>Profile</Typography>
+                </NextLink>
+              </MenuItem>
               <MenuItem onClick={() => (session ? signOut() : signIn())}>
                 <Typography textAlign="center">
                   {session ? "Logout" : "Login"}
