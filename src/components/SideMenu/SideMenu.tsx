@@ -20,6 +20,7 @@ import NextLink from "next/link";
 import { signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { usePathname } from "next/navigation";
+import HomeIcon from "@mui/icons-material/Home";
 
 const drawerWidth = 240;
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -43,13 +44,20 @@ const closedMixin = (theme: Theme): CSSObject => ({
   },
 });
 
-const menuRouteList = ["data", "profile", "settings", ""];
-const menuListTranslations = ["Data", "Profile", "Settings", "Sign Out"];
+const menuRouteList = ["", "data", "profile", "settings", ""];
+const menuListTranslations = [
+  "Home",
+  "Data",
+  "Profile",
+  "Settings",
+  "Sign Out",
+];
 const menuListIcons = [
-  <EqualizerIcon key={0} />,
-  <Person2Icon key={1} />,
-  <Settings key={2} />,
-  <ExitToAppIcon key={3} />,
+  <HomeIcon key={0} />,
+  <EqualizerIcon key={1} />,
+  <Person2Icon key={2} />,
+  <Settings key={3} />,
+  <ExitToAppIcon key={4} />,
 ];
 
 const SideMenu: FC = () => {

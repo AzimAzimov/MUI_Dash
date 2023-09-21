@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 import { Box } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Login from "@/components/Login";
 import scss from "../../Home.module.scss";
 
-const Signin = () => {
+const Signin: FC = () => {
   const { data: session } = useSession();
 
   return (
@@ -25,6 +25,7 @@ const Signin = () => {
               : "Login to your account to browse through project and explore our tools"}
           </p>
         </div>
+        {/*<FormSignIn />*/}
         <Login />
       </Box>
     </div>

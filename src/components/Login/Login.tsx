@@ -1,24 +1,12 @@
+"use client";
 import React, { FC } from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { Button } from "@mui/material";
+import { useSearchParams } from "next/navigation";
 
 const Login: FC = () => {
-  const { data: session } = useSession();
-
-  if (session) {
-    return (
-      <>
-        <Button
-          style={{ width: "200px" }}
-          variant="contained"
-          color="error"
-          onClick={() => signOut()}
-        >
-          Sign out
-        </Button>
-      </>
-    );
-  }
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/profile";
 
   return (
     <>
@@ -26,9 +14,9 @@ const Login: FC = () => {
         variant="contained"
         color="success"
         style={{ background: "#84D445", width: "200px" }}
-        onClick={() => signIn()}
+        onClick={() => signIn("google", { callbackUrl })}
       >
-        Sign in
+        Sign in with Google
       </Button>
     </>
   );
