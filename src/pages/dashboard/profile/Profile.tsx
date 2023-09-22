@@ -14,7 +14,6 @@ import Paper from "@mui/material/Paper";
 
 const Profile: FC = () => {
   const { data: session } = useSession();
-  // const names = session.user.name.split(" ");
   const firstName = session?.user?.name;
   const lastName = "";
   const [formData, setFormData] = useState({

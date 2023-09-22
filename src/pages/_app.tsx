@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 import Footer from "@/components/Footer";
 import { Preloader } from "@/components/Preloader/Preloader";
 import "../styles/global.scss";
+import ParticlesContainer from "@/components/Particle";
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -65,6 +66,15 @@ const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
           <CssBaseline />
           <Header ColorModeContext={ColorModeContext} />
           {loading && <Preloader />}
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <ParticlesContainer />
+          </div>
           <Layout>
             <Component {...pageProps} />
           </Layout>
