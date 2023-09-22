@@ -25,7 +25,6 @@ const Signin: FC = () => {
               : "Login to your account to browse through project and explore our tools"}
           </p>
         </div>
-        {/*<FormSignIn />*/}
         <Login />
       </Box>
     </div>
